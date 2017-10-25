@@ -5,7 +5,19 @@ from flask import Flask, request, render_template
 import hackbright
 # import pdb
 
+
 app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    """Show list of students and projects."""
+
+    students = hackbright.get_all_students()
+
+    projects = hackbright.get_all_projects()
+
+    return render_template("home.html", students=students, projects=projects)
 
 
 @app.route("/student")
@@ -65,10 +77,13 @@ def get_project():
 
     title, description, max_grade = hackbright.get_project_by_title(project)
 
+    student_grade = hackbright.get_grades_by_title(project)
+
     return render_template('project_info.html',
                            title=title,
                            description=description,
-                           max_grade=max_grade)
+                           max_grade=max_grade,
+                           grades=student_grade)
 
 
 if __name__ == "__main__":

@@ -10,5 +10,10 @@
 
   <p>Maximum Grade: {{ max_grade }}</p>
 
+  <ul>{% for grade in grades %}
+    <li>{{ grade[0] }}: {{ grade[1] }}</li>
+    {% endfor %}
+  </ul>
+
 </body>
 </html>

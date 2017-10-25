@@ -95,8 +95,8 @@ def get_grade_by_github_title(github, title):
 
     row = db_cursor.fetchone()
 
-    print "Student {acct} in project {title} received grade of {grade}".format(
-        acct=github, title=title, grade=row[0])
+    # print "Student {acct} in project {title} received grade of {grade}".format(
+    #     acct=github, title=title, grade=row[0])
 
     return row
 
@@ -155,6 +155,36 @@ def get_grades_by_title(title):
     for row in rows:
         print "Student {acct} received grade of {grade} for {title}".format(
             acct=row[0], grade=row[1], title=title)
+
+    return rows
+
+
+def get_all_students():
+    """Get a list of all students"""
+
+    QUERY = """
+        SELECT *
+        FROM students
+        """
+
+    db_cursor = db.session.execute(QUERY)
+
+    rows = db_cursor.fetchall()
+
+    return rows
+
+
+def get_all_projects():
+    """Get a list of all projects"""
+
+    QUERY = """
+        SELECT *
+        FROM projects
+        """
+
+    db_cursor = db.session.execute(QUERY)
+
+    rows = db_cursor.fetchall()
 
     return rows
 
