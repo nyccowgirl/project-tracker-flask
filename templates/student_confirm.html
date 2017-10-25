@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+    <title>Student Confirm</title>
+</head>
+<body>
+  <a href="/student?github={{github}}"><h1>{{ first }} {{ last }} was added successfully!</h1></a>
+
+  <form action='/student'>
+    <input type="hidden" value="{{ github }}" name='github'>
+<!--     <input type='submit' value='View Student Profile'> -->
+</form>
+
+  <p>GitHub Account: {{ github }}</p>
+</body>
+</html>
